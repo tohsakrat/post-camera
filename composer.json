@@ -1,0 +1,37 @@
+{
+    "name": "tohsakarat/post-camera",
+    "description": "An extension of flarum, modified from drake/fancybox. Except fancybox from flamoji, spoiler. And using lazy load to prevent loading too much pics once.An extension of flarum, modified from drake/fancybox.",
+    "type": "flarum-extension",
+    "keywords": ["flarum","extension","images","screen shoot"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tohsakarat",
+            "email": "tohsakarat@github.cop"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/tohsakarat/fancybox-plus/issues",
+        "source": "https://github.com/tohsakarat/fancybox-plus"
+        
+    },
+    "require": {
+        "flarum/core": "^1.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "tohsakarat\\fancybox\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Post-Camera",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-camera",
+                "backgroundColor": "#00c8b0",
+                "color": "#fff"
+            }
+        }
+    }
+}
