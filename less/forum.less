@@ -1,0 +1,105 @@
+
+.temp-screenShot-box{
+    padding:1em;
+    
+    background: var(--body-bg)!important;
+
+}
+
+.temp-screenShot-outer-box{
+    div#content>*:first-child .Hero+.container, .IndexPage>.container{
+        box-shadow: none!important;
+    }
+    .item-meta{
+        display:none;
+    }
+    .Hero .container{
+        padding-top: 120px;
+    }
+    .container:not(header#header.App-header.navbar-fixed-top > .container){
+        padding: 0 !important;
+        box-shadow: none!important;
+    }
+    .LoadingPost{
+        display: none;
+    }
+    .item-id span{
+        white-space: nowrap;
+    }
+    .Hero.DiscussionHero--colored:before, .TagTile.colored:before, .TagHero--colored:before{
+        z-index:0;
+    }
+    .Hero .container .DiscussionHero-items{
+        z-index: 1!important;
+    }
+
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+
+    .Dropdown-menu{
+        display: none;
+    }
+    
+    .TagHero--colored:before{
+        z-index:0;
+    }
+
+    .DiscussionPage-nav{
+        display: none;
+    
+    }
+    @media @desktop-up{
+
+    .PostStream-item:not(:last-child)>.Post:not(.LoadingPost) .Post-header{
+        width:unset
+    }
+
+    div#content .DiscussionPage>.DiscussionPage-discussion>.Hero:first-child+.container:nth-child(2) {
+        transition: 1s;
+        background: linear-gradient(0deg, transparent 0%, var(--control-bg) 100vh) !important;
+    }
+
+        .DiscussionPage-discussion>.container{
+            display: block !important;;
+        }
+    
+    }
+}
+
+.temp-screenShot-info .from {
+    color: aqua;
+}
+
+.temp-screenShot-info {
+    height: 3em;
+    padding: 0.5em;
+    text-align: center;
+    color: gold;
+}
+
+
+.temp-screenShot-outer-box time{
+    white-space: nowrap;
+}
+
+.temp-screenShot-box .coverAll{
+  position: absolute!important;
+  left: -1em!important;
+  width: calc(100% + 3em)!important;
+  filter: saturate(0) brightness(.6) contrast(.6) brightness(1.15);
+
+}
+
+.temp-screenShot-box .coverAll.coverGold{
+  position: absolute!important;
+  bottom: 0px!important;
+
+}
+
+.temp-screenShot-box .coverAll.coverGold {
+
+    @media @phone{
+    background: linear-gradient(357deg, rgba(255,216,0,0.5) 0%, transparent 100px, transparent 90%, #ff4d4d 100%) !important
+    }
+}
