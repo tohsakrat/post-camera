@@ -3,7 +3,7 @@ import { extend } from 'flarum/common/extend';
 import DiscussionControls from 'flarum/forum/utils/DiscussionControls';
 import PostControls from 'flarum/forum/utils/PostControls';
 import Button from 'flarum/common/components/Button';
-import { domToPng } from 'modern-screenshot'
+import {domToJpeg } from 'modern-screenshot'
 
 app.initializers.add('tohsakarat-postCamera', () => {
   function trimUrl(url) {
@@ -62,16 +62,16 @@ app.initializers.add('tohsakarat-postCamera', () => {
             
             // 创建第一个 div 元素并设置类名 'coverAll'
             var firstDiv = document.createElement('div');
-            firstDiv.className = 'coverAll';
+            firstDiv.className = 'coverAll coverPaper';
             
 
 
             // 创建第一个信息标签
             var infoDiv = document.createElement('div');
             infoDiv.className = 'temp-screenShot-info';
-            infoDiv.innerHTML= "<b class='from'> 👉  </b>"+trimUrl(postUrl) +" "+app.forum.data.attributes.title+"<br / >"+app?.session?.user?.data?.morseCode;
+            infoDiv.innerHTML= "<b class='from'> 👉  </b>"+trimUrl(postUrl) +" "+app.forum.data.attributes.title+"<br / >"+ (app?.session?.user?.data?.morseCode?app?.session?.user?.data?.morseCode:'');
             
-           // box.appendChild(firstDiv);
+           //box.appendChild(firstDiv);
            
             box.appendChild( infoDiv )
             box.appendChild( node1 )
@@ -81,22 +81,32 @@ app.initializers.add('tohsakarat-postCamera', () => {
               img.removeAttribute('loading')
               img.removeAttribute('importance')
             })
-
-
+            
+            let list = box.querySelectorAll('.Dropdown-menu,.Reactions--Ul,.CommentPost--Reactions');
+            for(let i =0; i< list.length; ++i){
+               list[i].parentNode.removeChild(list[i]);
+            }
+            
 
             setTimeout(() => {
-                domToPng(box,{
-                  quality:window.isPC?16:8,
+               domToJpeg(box,{
+                  quality:0.8,
+                  scale:2,
                   debug: true,
+                  workerNumber :16 ,
+                  timeout:3000,
                   progress: (current, total) => {
                     window.canSave=false;
                     m.redraw();
                     console.log(`${ current }/${ total }`)
                     window.cameraCurProgress=`${ current }/${ total }`
+                  },
+                  features:  {
+                      fixSvgXmlDecode:true
                   }
                 }).then(dataUrl => {
               const link = document.createElement('a')
-              link.download = "screenShot"+app.forum.data.attributes.title+ app.route.post(post)+'.png'
+              link.download = "screenShot"+app.forum.data.attributes.title+ app.route.post(post)+'.jpeg'
               link.href = dataUrl
               link.click()
               window.canSave=true;
@@ -157,9 +167,8 @@ app.initializers.add('tohsakarat-postCamera', () => {
             // 创建第一个信息标签
             var infoDiv = document.createElement('div');
             infoDiv.className = 'temp-screenShot-info';
-            infoDiv.innerHTML= "<b class='from'> 👉  </b>"+trimUrl(discussionUrl) +" "+app.forum.data.attributes.title+"<br / >"+app?.session?.user?.data?.morseCode;;
-            
-            //box.appendChild(firstDiv);
+            infoDiv.innerHTML= "<b class='from'> 👉  </b>"+trimUrl(discussionUrl) +" "+app.forum.data.attributes.title+"<br / >"+ (app?.session?.user?.data?.morseCode?app?.session?.user?.data?.morseCode:'');
+           box.appendChild(firstDiv);
            
             box.appendChild( infoDiv )
             box.appendChild( node1 )
@@ -169,19 +178,30 @@ app.initializers.add('tohsakarat-postCamera', () => {
               img.removeAttribute('loading')
               img.removeAttribute('importance')
             })
+            let list = box.querySelectorAll('.Dropdown-menu,.Reactions--Ul,.CommentPost--Reactions');
+            for(let i =0; i< list.length; ++i){
+               list[i].parentNode.removeChild(list[i]);
+            }
+            
             setTimeout(() => {
-                domToPng(box,{
-                  quality:window.isPC?8:4,
+               domToJpeg(box,{
+                  quality:0.8,
+                  scale:2,
                   debug: true,
+                  workerNumber :16 ,
+                  timeout:3000,
                   progress: (current, total) => {
                     window.canSave=false;
                     m.redraw();
                     console.log(`${ current }/${ total }`)
                     window.cameraCurProgress=`${ current }/${ total }`
+                  },
+                  features:  {
+                      fixSvgXmlDecode:true
                   }
                 }).then(dataUrl => {
               const link = document.createElement('a')
-              link.download = "screenShot"+app.forum.data.attributes.title+'.png'
+              link.download = "screenShot"+app.forum.data.attributes.title+'.jpeg'
               link.href = dataUrl
               link.click()
               window.canSave=true;

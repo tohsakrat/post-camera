@@ -5,7 +5,9 @@
     background: var(--body-bg)!important;
 
 }
-
+.DiscussionListItem :is(li.item-screen-shot,li.item-filter-toolbar) {
+    display: none;
+}
 .temp-screenShot-outer-box{
     div#content>*:first-child .Hero+.container, .IndexPage>.container{
         box-shadow: none!important;
@@ -87,7 +89,7 @@
   position: absolute!important;
   left: -1em!important;
   width: calc(100% + 3em)!important;
-  filter: saturate(0) brightness(.6) contrast(.6) brightness(1.15);
+ /* filter: saturate(0) brightness(.6) contrast(.6) brightness(1.15);*/
 
 }
 
