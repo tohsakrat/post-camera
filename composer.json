@@ -1,13 +1,13 @@
 {
     "name": "tohsakarat/post-camera",
-    "description": "An extension of flarum, modified from drake/fancybox. Except fancybox from flamoji, spoiler. And using lazy load to prevent loading too much pics once.An extension of flarum, modified from drake/fancybox.",
+    "description": "An extension of flarum, allow user to save the screen shot of posts. Different from existing screenshot extension, it can save screenshot of sigle post instead of the whole discussion.",
     "type": "flarum-extension",
     "keywords": ["flarum","extension","images","screen shoot"],
     "license": "MIT",
     "authors": [
         {
             "name": "tohsakarat",
-            "email": "tohsakarat@github.cop"
+            "email": "tohsakarat@github.com"
         }
     ],
     "support": {
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "tohsakarat\\fancybox\\": "src/"
+            "tohsakarat\\post-camera\\": "src/"
         }
     },
     "extra": {
